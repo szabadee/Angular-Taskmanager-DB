@@ -1,0 +1,141 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">Flow Task Manager</h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark"
+      href="#">Home</a>
+  </nav>
+  <a class="btn btn-outline-primary"
+    href="#">Sign up</a>
+</div>
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">
+    Add new task
+    <a class="btn btn-primary"
+      style="cursor: pointer; color: whitesmoke;"
+      (click)="showNewTask(add_task_modal)">+</a>
+  </h1>
+  <!-- <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example.
+    It’s built with default Bootstrap components and utilities with little customization.</p> -->
+</div>
+
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+    <div *ngFor="let task of tasks; let i = index"
+     class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">{{ task.title }}</h4>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title pricing-card-title">
+          Category: {{ task.category }}
+        </h3>
+        <p>
+          {{ task.text }}
+        </p>
+        <button type="button"
+          (click)="editList(i, add_task_modal)"
+          class="btn btn-lg btn-block btn-outline-primary">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="pt-4 my-md-5 pt-md-5 border-top">
+  <div class="row">
+    <div class="col-12 col-md">
+      <img class="mb-2"
+        src="/docs/4.2/assets/brand/bootstrap-solid.svg"
+        alt=""
+        width="24"
+        height="24">
+      <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Features</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="text-muted"
+            href="#">Cool stuff</a></li>
+        <li><a class="text-muted"
+            href="#">Random feature</a></li>
+        <li><a class="text-muted"
+            href="#">Team feature</a></li>
+        <li><a class="text-muted"
+            href="#">Stuff for developers</a></li>
+        <li><a class="text-muted"
+            href="#">Another one</a></li>
+        <li><a class="text-muted"
+            href="#">Last time</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="text-muted"
+            href="#">Resource</a></li>
+        <li><a class="text-muted"
+            href="#">Resource name</a></li>
+        <li><a class="text-muted"
+            href="#">Another resource</a></li>
+        <li><a class="text-muted"
+            href="#">Final resource</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>
+        <a href="#">About</a>
+      </h5>
+    </div>
+  </div>
+</footer>
+
+<ng-template #add_task_modal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-create-edit-task [model]="taskModel"
+      (save)="showAppModelValue($event)"></app-create-edit-task>
+  </div>
+</ng-template>
+
+<form>
+  <h2>Sign Up</h2>
+  <label for="email">E-mail: </label>
+  <input type="text"
+    name="email"
+    id="email"
+    [(ngModel)]="signUpModel.email"
+    (change)="validateEmail($event)">
+  <p *ngIf="emailInvalid"
+    style="color: red">Invalid email address!</p>
+  <br>
+  <label for="fullname">Fullname: </label>
+  <input type="text"
+    name="fullname"
+    id="fullname"
+    [(ngModel)]="signUpModel.fullname"
+    (blur)="validateFullname($event)">
+  <p *ngIf="fullnameInvalid"
+    style="color: red">Fullname must start with uppercase!</p>
+  <br>
+  <label for="password">Password: </label>
+  <input type="text"
+    name="password"
+    id="password"
+    [(ngModel)]="signUpModel.password"
+    (keypress)="validatePassword($event)">
+  <p class="{{passwordInvalid}}">{{passwordInvalid}}</p>
+  <br>
+  <button (click)="signUp()">Sign Up</button>
+</form>
+
+<button class="btn btn-warning" (click)="getTasks()">Get rocket</button>
+<ul>
+  <li *ngFor="let data of rocketData">{{ data }}</li>
+</ul>

@@ -1,0 +1,22 @@
+<form>
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input class="form-control" type="text" name="title" id="title" [(ngModel)]="appModel.title">
+      <!-- <p>{{ appModel.title }}</p> -->
+      <label for="checked">Checked:</label>
+      <input class="form-control" type="checkbox" name="checked" id="checked" [(ngModel)]="appModel.checked">
+      <!-- <p>{{ appModel.checked }}</p> -->
+      <label for="categories">Category:</label>
+      <select class="form-control" name="categories" id="categories" [(ngModel)]="appModel.category">
+        <option value="Kaja">Kaja</option>
+        <option value="Pia">Pia</option>
+        <option value="Nők">Nők</option>
+      </select>
+      <!-- <p>{{ appModel.category }}</p> -->
+      <label for="text">Text:</label>
+      <textarea class="form-control" type="text" name="text" id="text" [(ngModel)]="appModel.text">
+      </textarea>
+      <!-- <p>{{ appModel.text }}</p> -->
+      <button class="btn btn-success mt-3" (click)="showAppModelValue()">Save</button>
+    </div>
+  </form>
