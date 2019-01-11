@@ -2,10 +2,16 @@
   <h5 class="my-0 mr-md-auto font-weight-normal">Flow Task Manager</h5>
   <nav class="my-2 my-md-0 mr-md-3">
     <a class="p-2 text-dark"
-      href="#">Home</a>
+      href="">Home</a>
   </nav>
-  <a class="btn btn-outline-primary"
-    href="#">Sign up</a>
+<a class="btn btn-outline-primary"
+  [routerLink]="['/', 'sign-up']">Sign up</a>
+  <a class="btn btn-outline-secondary"
+  [routerLink]="['login']">Login</a>
+</div>
+
+<div class="container">
+  <router-outlet></router-outlet>
 </div>
 
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
@@ -15,6 +21,7 @@
       style="cursor: pointer; color: whitesmoke;"
       (click)="showNewTask(add_task_modal)">+</a>
   </h1>
+
   <!-- <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example.
     It’s built with default Bootstrap components and utilities with little customization.</p> -->
 </div>
@@ -104,38 +111,3 @@
   </div>
 </ng-template>
 
-<form>
-  <h2>Sign Up</h2>
-  <label for="email">E-mail: </label>
-  <input type="text"
-    name="email"
-    id="email"
-    [(ngModel)]="signUpModel.email"
-    (change)="validateEmail($event)">
-  <p *ngIf="emailInvalid"
-    style="color: red">Invalid email address!</p>
-  <br>
-  <label for="fullname">Fullname: </label>
-  <input type="text"
-    name="fullname"
-    id="fullname"
-    [(ngModel)]="signUpModel.fullname"
-    (blur)="validateFullname($event)">
-  <p *ngIf="fullnameInvalid"
-    style="color: red">Fullname must start with uppercase!</p>
-  <br>
-  <label for="password">Password: </label>
-  <input type="text"
-    name="password"
-    id="password"
-    [(ngModel)]="signUpModel.password"
-    (keypress)="validatePassword($event)">
-  <p class="{{passwordInvalid}}">{{passwordInvalid}}</p>
-  <br>
-  <button (click)="signUp()">Sign Up</button>
-</form>
-
-<button class="btn btn-warning" (click)="getTasks()">Get rocket</button>
-<ul>
-  <li *ngFor="let data of rocketData">{{ data }}</li>
-</ul>

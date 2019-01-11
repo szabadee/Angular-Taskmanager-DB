@@ -1,0 +1,21 @@
+<h1> {{ activatedRoute.snapshot.data.title }}</h1>
+<form>
+  <div class="form-group" style="text-align: center">
+  <label for="username">Username: </label>
+  <input type="text"
+    class="form-control"
+    name="username"
+    id="username"
+    [(ngModel)]="user.username">
+  <br>
+  <label for="password">Password: </label>
+  <input type="password"
+    class="form-control"
+    name="password"
+    id="password"
+    [(ngModel)]="user.password"
+    (keypress)="validatePassword($event)">
+  <p class="{{passwordInvalid}}">{{passwordInvalid}}</p>
+  <button class="btn btn-primary" (click)="login()">Login</button>
+</div>
+</form>
