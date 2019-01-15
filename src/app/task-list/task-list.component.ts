@@ -15,15 +15,15 @@ export class TaskListComponent implements OnInit {
 
   constructor() { }
 
-  public showNewTask(modalContent: TemplateRef<any>) {
-    this.taskModel = new AppModel();
-    this.modalRef = this.modalService.show(modalContent);
-  }
+  // public showNewTask(modalContent: TemplateRef<any>) {
+  //   this.taskModel = new AppModel();
+  //   this.modalRef = this.modalService.show(modalContent);
+  // }
 
-  public editList(index: number, modalContent: TemplateRef<any>) {
-    this.taskModel = this.tasks[index];
-    this.modalRef = this.modalService.show(modalContent);
-  }
+  // public editList(index: number, modalContent: TemplateRef<any>) {
+  //   this.taskModel = this.tasks[index];
+  //   this.modalRef = this.modalService.show(modalContent);
+  // }
 
   ngOnInit() {
   }
